@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Phones</title>
+    <link rel="stylesheet" href="allPhones.css" type="text/css" />
+</head>
+<body>
+    <h1>All Phones</h1>
+    <label for="brandSelect">Select Brand:</label>
+    <select id="brandSelect" onchange="filterPhones()">
+        <option value="all">All Brands</option>
+        <option value="Apple">Apple</option>
+        <option value="Samsung">Samsung</option>
+        <option value="Oneplus">Oneplus</option>
+        <option value="Xiaomi">Xiaomi</option>
+        <option value="LG">LG</option>
+        <option value="Sony">Sony</option>
+        <option value="Nokia">Nokia</option>
+        <option value="Asus">Asus</option>
+        <option value="Motorola">"Motorola</option>
+    </select>
+
+    <div class="phone-container">
+        <% phones.forEach(function(phone) { %>
+        <div class="phone">
+            <img src="<%= phone.image %>"/>
+            <div class="details">
+                <h2 class="brand"><%= phone.brand %></h2> <!-- Add class for brand -->
+                <h2><%= phone.brand %> <%= phone.model %></h2>
+                <p><strong>Colour:</strong> <%= phone.colour %></p>
+                <p><strong>Storage:</strong> <%= phone.storage %> GB</p>
+                <p><strong>Description:</strong> <%= phone.description %></p>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+
+    <script>
+        function filterPhones() {
+            var brand = document.getElementById("brandSelect").value;
+            var phones = document.querySelectorAll(".phone");
+            
+            phones.forEach(function(phone) {
+                var brandText = phone.querySelector(".brand").innerText;
+                
+                if (brand === "all" || brandText === brand) {
+                    phone.style.display = "block";
+                } else {
+                    phone.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
+
