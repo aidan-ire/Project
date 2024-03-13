@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../individual.css">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <% ourProduct.forEach(function(phone) { %>
+            <div class="phone">
+                <img src="<%= phone.image %>"/>
+                <div class="details">
+                    <h2 class="brand"><%= phone.brand %></h2> <!-- Add class for brand -->
+                    <h2><%= phone.model %></h2>
+                    <p><strong>Colour:</strong> <%= phone.colour %></p>
+                    <p><strong>Storage:</strong> <%= phone.storage %> GB</p>
+                    <p><strong>Description:</strong> <%= phone.description %></p>
+        
+                </div>
+            </div>
+        <% }); %>
+    </center>
+    
+    
+</body>
+</html>
+

@@ -57,3 +57,22 @@ h1 {
 .details p strong {
     font-weight: bold;
 }
+
+.details button {
+    padding: 10px;
+    background-color: #c4c4c4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-decoration: none;
+}
+
+.details button:hover {
+    background-color: #cecece;
+}
+
+.description{
+
+    height: 130px;
+}

@@ -14,10 +14,6 @@ app.use(express.static('styles')); // Serve static files from the style director
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve HTML file with form
-app.get('/', (req, res) => {
-    res.render('addPhone'); // Render the home page using the home.ejs template
-});
 
 // Handle form submission
 app.post('/submit_phone', (req, res) => {
@@ -47,7 +43,7 @@ app.post('/submit_phone', (req, res) => {
     });
 });
 
-app.get('/allPhones', (req, res) => {
+app.get('/', (req, res) => {
     // Read phone data from JSON file
     fs.readFile('addPhone.json', (error, data) => {
         if (error) {
@@ -59,6 +55,22 @@ app.get('/allPhones', (req, res) => {
         const phones = JSON.parse(data);
         res.render('allPhones', { phones });
     });
+});
+
+// Serve HTML file with form
+app.get('/addPhone', (req, res) => {
+    res.render('addPhone.ejs'); // Render the home page using the home.ejs template
+});
+
+app.get('/individual/:name', function(req, res) {
+    function showIndividual(oneItem) {
+        return oneItem.model === req.params.name;
+    }
+
+    // Load product data from JSON file
+    const info = require('./addPhone.json');
+    const ourProduct = info.filter(showIndividual);
+    res.render("individual.ejs", { ourProduct });
 });
 
 // Start the server
