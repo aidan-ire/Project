@@ -21,3 +21,12 @@ body {
 .details p, h2{
     text-align: left;
 }
+
+#back a {
+    text-decoration: none;
+    color: black;
+}
+
+#back{
+    margin-bottom: 50px;
+}

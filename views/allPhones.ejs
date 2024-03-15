@@ -6,13 +6,22 @@
     <link rel="stylesheet" href="allPhones.css" type="text/css" />
 </head>
 <body>
-    <a href="/">All Phones</a>
-    <a href="/addPhone">Add a Phone</a>
-
-
+    <nav>
+        <ul>
+            <center>
+          <li>
+            <a href="/">All Phones</a>
+          </li>
+          <li>
+            <a href="/addPhone">Add Phone</a>
+          </li>
+        </center>
+        </ul>
+      </nav>
 
 
     <h1>All Phones</h1>
+    <div id = "brandFilter" >
     <label for="brandSelect">Select Brand:</label>
     <select id="brandSelect" onchange="filterPhones()">
         <option value="all">All Brands</option>
@@ -24,19 +33,23 @@
         <option value="Sony">Sony</option>
         <option value="Nokia">Nokia</option>
         <option value="Asus">Asus</option>
-        <option value="Motorola">"Motorola</option>
+        <option value="Motorola">Motorola</option>
     </select>
+</div>
 
     <div class="phone-container">
         <% phones.forEach(function(phone) { %>
         <div class="phone">
+            <center>
             <img src="<%= phone.image %>"/>
+        </center>
             <div class="details">
                 <h2 class="brand"><%= phone.brand %></h2> <!-- Add class for brand -->
                 <h2><%= phone.brand %> <%= phone.model %></h2>
                 <p><strong>Colour:</strong> <%= phone.colour %></p>
                 <p><strong>Storage:</strong> <%= phone.storage %> GB</p>
                 <div class="description"><p><strong>Description:</strong> <%= phone.description %></p></div>
+                <br>
                 <a href="/individual/<%= phone.model %>"><button>See more</button></a>
 
             </div>
